@@ -14,18 +14,22 @@ export default class HelloWorld extends React.Component {
 
     // How to set initial state in ES6 class syntax
     // https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class
-    this.state = { name: this.props.name };
+    this.state = { name: this.props.name, age: this.props.age };
   }
 
-  updateName = (name) => {
+  updateName = (age) => {
     this.setState({ name });
+  };
+
+  updateAge = (age) => {
+    this.setState({ age });
   };
 
   render() {
     return (
       <div>
         <h3>
-          Hello, {this.state.name}!
+          Hello, {this.state.name}! You're {this.state.age} years old.
         </h3>
         <hr />
         <form >
@@ -37,6 +41,12 @@ export default class HelloWorld extends React.Component {
             type="text"
             value={this.state.name}
             onChange={(e) => this.updateName(e.target.value)}
+          />
+          <input
+            id="age"
+            type="text"
+            value={this.state.age}
+            onChange={(e) => this.updateAge(e.target.value)}
           />
         </form>
       </div>
